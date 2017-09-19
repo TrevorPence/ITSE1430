@@ -14,10 +14,14 @@ namespace Lab_1
 {
     class Program
     {
-        static string title = null;
-        static string description = null;
-        static int length = 0;
-        static bool owned = false;
+        /*
+         * Gave me a warning telling me to put a "s_" at the beginning of my
+         * variable names and I'm not sure why.
+         */
+        static string s_title;
+        static string s_description;
+        static int s_length;
+        static bool s_owned;
 
         static void Main(string[] args)
         {
@@ -51,16 +55,16 @@ namespace Lab_1
 
         static void ListMovie()
         {
-            if(String.IsNullOrEmpty(title))
+            if(String.IsNullOrEmpty(s_title))
             {
                 Console.WriteLine("\nNo movies available.");
             }
             else
             {
-                Console.WriteLine($"\n{title}");
-                Console.WriteLine($"Description: {description}");
-                Console.WriteLine($"Run Time: {length} minutes");
-                Console.WriteLine($"Status: {(owned ? "Owned" : "Available")}");
+                Console.WriteLine($"\n{s_title}");
+                Console.WriteLine($"Description: {s_description}");
+                Console.WriteLine($"Run Time: {s_length} minutes");
+                Console.WriteLine($"Status: {(s_owned ? "Owned" : "Available")}");
             }
 
             Console.Write("\nPress any key to continue");
@@ -72,23 +76,23 @@ namespace Lab_1
             Console.Write("\nEnter a movie title: ");
             do
             {
-                title = Console.ReadLine();
-                if (String.IsNullOrEmpty(title))
+                s_title = Console.ReadLine();
+                if (String.IsNullOrEmpty(s_title))
                     Console.Write("Invalid input, must enter something for the title: ");
-            } while (String.IsNullOrEmpty(title));
+            } while (String.IsNullOrEmpty(s_title));
 
             Console.Write("Enter an optional description: ");
-            description = Console.ReadLine();
-            if (String.IsNullOrEmpty(description))
-                description = "Not Available";
+            s_description = Console.ReadLine();
+            if (String.IsNullOrEmpty(s_description))
+                s_description = "Not Available";
 
             Console.Write("Enter the movie's length: ");
             do
             {
-                length = ReadInt();
-                if (length < 0)
+                s_length = ReadInt();
+                if (s_length < 0)
                     Console.Write("Invalid input, must be a number greater than 0: ");
-            } while (length < 0);
+            } while (s_length < 0);
 
             string readBool = null;
             Console.Write("Is the movie available (Y/N): ");
@@ -101,14 +105,14 @@ namespace Lab_1
             } while (Char.ToUpper(readBool[0]) != 'Y' && Char.ToUpper(readBool[0]) != 'N');
 
             if (Char.ToUpper(readBool[0]) == 'Y')
-                owned = false;
+                s_owned = false;
             else
-                owned = true;
+                s_owned = true;
         }
 
         static void RemoveMovie()
         {
-            if (!String.IsNullOrEmpty(title))
+            if (!String.IsNullOrEmpty(s_title))
             {
                 string removeInput = null;
                 Console.Write("Are you sure you want to delete the movie(Y/N): ");
@@ -123,9 +127,9 @@ namespace Lab_1
 
                 if (Char.ToUpper(removeInput[0]) == 'Y')
                 {
-                    title = null;
-                    length = 0;
-                    description = null;
+                    s_title = null;
+                    s_length = 0;
+                    s_description = null;
 
                     Console.WriteLine("Movie has been deleted, press any key to continue");
                     Console.ReadKey();
