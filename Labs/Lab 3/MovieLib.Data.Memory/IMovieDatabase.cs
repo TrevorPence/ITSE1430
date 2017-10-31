@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Trevor Pence
+ * ITSE-1430
+ * 10/30/2017
+ */
+
+using System;
 using System.Collections.Generic;
 
 namespace MovieLib.Data.Memory

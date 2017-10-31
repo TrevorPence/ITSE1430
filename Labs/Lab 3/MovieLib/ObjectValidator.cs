@@ -1,4 +1,9 @@
-﻿
+﻿/*
+ * Trevor Pence
+ * ITSE-1430
+ * 10/30/2017
+ */
+
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
