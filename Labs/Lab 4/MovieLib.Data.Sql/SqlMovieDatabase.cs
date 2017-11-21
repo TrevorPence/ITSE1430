@@ -30,7 +30,7 @@ namespace MovieLib.Data.Sql
             int id = 0;
             using (SqlConnection con = OpenDatabase())
             {
-                SqlCommand cmd = new SqlCommand("Add Movie", con);
+                SqlCommand cmd = new SqlCommand("AddMovie", con);
 
                 cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = movie.Title;
                 cmd.Parameters.AddWithValue("@description", movie.Description);
@@ -50,7 +50,7 @@ namespace MovieLib.Data.Sql
         {
             using (SqlConnection con = OpenDatabase())
             {
-                SqlCommand cmd = new SqlCommand("GetProduct", con) { CommandType = CommandType.StoredProcedure };
+                SqlCommand cmd = new SqlCommand("GetMovie", con) { CommandType = CommandType.StoredProcedure };
                 cmd.Parameters.AddWithValue("@id", id);
 
                 var ds = new DataSet();
@@ -91,7 +91,7 @@ namespace MovieLib.Data.Sql
             using (var connection = OpenDatabase())
             {
                 //connection.CreateCommand();
-                var cmd = new SqlCommand("GetAllProducts", connection);
+                var cmd = new SqlCommand("GetAllMovies", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -130,7 +130,7 @@ namespace MovieLib.Data.Sql
                 //Alternative approach to creating command
                 var cmd = conn.CreateCommand();
                 //cmd.CommandText = "DELETE FROM Products WHERE Id = @id";
-                cmd.CommandText = "RemoveProduct";
+                cmd.CommandText = "RemoveMovie";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //Long way
@@ -152,7 +152,7 @@ namespace MovieLib.Data.Sql
 
             using (var conn = OpenDatabase())
             {
-                var cmd = new SqlCommand("UpdateProduct", conn) { CommandType = CommandType.StoredProcedure };
+                var cmd = new SqlCommand("UpdateMovie", conn) { CommandType = CommandType.StoredProcedure };
 
                 cmd.Parameters.AddWithValue("@id", existing.Id);
                 cmd.Parameters.AddWithValue("@title", movie.Title);
